@@ -1,13 +1,9 @@
 # -*- encoding=utf8 -*-
-try:
-    from airtest.core.api import *
-    from airtest.cli.parser import cli_setup
-    import time
-    from poco.drivers.android.uiautomation import AndroidUiautomationPoco
-    auto_setup(__file__, logdir=True, devices=["Android:///", ])
-    import pytest
-except:
-    print("cannot import airtest")
+from airtest.core.api import *
+from airtest.cli.parser import cli_setup
+import time
+from poco.drivers.android.uiautomation import AndroidUiautomationPoco
+import pytest
 
 
 
@@ -15,6 +11,7 @@ class TestWestdemo():
     poco = None
 
     def setup_class(self):
+        auto_setup(__file__, logdir=True, devices=["Android:///", ])
         self.poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=True)
 
     def teardown_class(self):
